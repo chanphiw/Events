@@ -25,38 +25,38 @@
          .controller("uhv", function ($scope, $http) {
             $http.get("event.json").then(
                function successCallback(response) {
-                  $scope.codes = response.data;
-                  console.log("Event List : ");
-                  console.log(response.data);
+                  $scope.codes = response.data
+                  console.log("Event List : ")
+                  console.log(response.data)
                },
                function errorCallback(response) {
-                  console.log("Unable to perform get request");
+                  console.log("Unable to perform get request")
                }
-            );
+            )
          })
          .filter("myfilter", function () {
             return function (x) {
                var i,
                   c,
-                  txt = "";
+                  txt = ""
                for (i = 0; i < x.length; i++) {
-                  c = x[i];
+                  c = x[i]
 
-                  c = c.toUpperCase();
+                  c = c.toUpperCase()
 
-                  txt += c;
+                  txt += c
                }
-               return txt;
-            };
+               return txt
+            }
          });
-         
+
    </script>
 </head>
 
 <body class="container">
    <p id="demo"></p>
    <script>
-      const d = new Date();
+      const d = new Date()
       document.getElementById("demo").innerHTML = d;
    </script>
    <div ng-app="app" ng-controller="uhv">
@@ -103,7 +103,7 @@
                         <input ng-model="s.Effect" placeholder="ผลกระทบ" class="form-control input-md" />
                      </th>
                   </tr>
-                  <tr class="font-weight-bolder" ng-repeat=" r in  codes.eventlist | filter:s | limitTo: 15">
+                  <tr class="font-weight-bolder" ng-repeat=" r in  codes.eventlist | filter:s | limitTo: 30">
                      <td>{{ $index+1}}</td>
                      <td>{{ r.Date}}</td>
                      <td>{{ r.Time}}</td>
